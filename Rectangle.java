@@ -30,7 +30,6 @@ public class Rectangle
      {
          width = w;
      }
-<<<<<<< HEAD
 
      /**
       * The getLength method returns a Rectangle
@@ -65,7 +64,5 @@ public class Rectangle
             return length * width;
         }
 
-=======
->>>>>>> 7c9c3d11448c02de75bd73161e1eea020e640923
     
 }
