@@ -12,14 +12,22 @@ public class ClassTest
 
         Rectangle box = new Rectangle();
 
-        // Indicate what we ar doing.
-        System.out.println("Sending the value 10.0 to the setLengh method.");
-
-        // Call the box object's setLength method.
+        // Call the object's setLenght method, passing 10,0
+        // as an argument.
         box.setLength(10.0);
 
-        // Indicate we are done.
-        System.out.println("Done.");
+        // Call the object's setWidth method, passing 20.0
+        // as an argument.
+        box.setWidth(20.0);
+
+        // Display the object's length and width and area.
+        System.out.println("The box's length is " + 
+            box.getLength());
+        System.out.println("The box's width is " +
+            box.getWidth());
+        System.out.println("The box's area is " +
+            box.getArea());
+
     }
     
 }
