@@ -7,7 +7,19 @@
 public class Rectangle 
 {
     private double length;
-    private double width;   
+    private double width;  
+    
+    /**
+     * Constructor
+     * @param len The length of the rectangle.
+     * @param w The width of the rectangel.
+     */
+
+      public Rectangle(double len, double w)
+      {
+          length = len;
+          width = w;
+      }
    
     /**
      * The setLength method stores a value in the 
@@ -31,19 +43,7 @@ public class Rectangle
          width = w;
      }
 
-     /**
-      * Constructor
-      * @param len The length of the rectangle.
-      * @param w The width of the rectangel.
-      */
-
-      public Rectangle(double len, double w)
-      {
-          length = len;
-          width = w;
-      }
-
-     /**
+   	/**
       * The getLength method returns a Rectangle
       * object's length.
       * @return The value in the length field.

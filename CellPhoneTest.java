@@ -39,5 +39,7 @@ public class CellPhoneTest
         System.out.println("Manufacturer: " + phone.getManufact());
         System.out.println("Model number: " + phone.getModel());
         System.out.println("Retail price: " + phone.getRetailPrice());
+
+        keyboard.close();
     }    
 }

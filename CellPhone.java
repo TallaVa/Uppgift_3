@@ -10,13 +10,14 @@
      private double retailPrice;    //Retail Price
 
    	/**
-      * Construcor
-      * @param man The phone's manufacturer.
-      * @param mod The phone's model number.
-      * @param price The phone's retail price.
-      */
+     * Construcor
+     * 
+     * @param man   The phone's manufacturer.
+     * @param mod   The phone's model number.
+     * @param price The phone's retail price.
+     */
 
-      public CellPone(String man, String mod, double price)
+    public CellPhone(String man, String mod, double price)
       {
           manufact = man;
           model = mod;

@@ -1,6 +1,6 @@
 /**
  * This program demonstrates the Rectangle class's
- * setLength method.
+ * setLength, setWidth, getLength and getWidth method.
  */
 
 public class ClassTest 
@@ -10,7 +10,7 @@ public class ClassTest
         // Create a rectangle object and assign its
         // adress to the box variable.
 
-        Rectangle box = new Rectangle();
+        Rectangle box = new Rectangle(0, 0);
 
         // Call the object's setLenght method, passing 10,0
         // as an argument.
