@@ -10,7 +10,7 @@ public class ClassTest
         // Create a rectangle object and assign its
         // adress to the box variable.
 
-        Rectangle box = new Rectangle(0, 0);
+        Rectangle box = new Rectangle();
 
         // Call the object's setLenght method, passing 10,0
         // as an argument.
