@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.*;
 
 /**
  * Player class för spelet Cho-Han
@@ -30,10 +30,14 @@ public class Player
       public void makeGuess()
       {
           //Skapar ett Random object
-          Random rand = new Random();
+          //Random rand = new Random();
+          Scanner key = new Scanner(System.in);
 
           //få ett random nummer av antingen 0 eller 1
-          int guessNumber = rand.nextInt(2);
+          //int guessNumber = rand.nextInt(2);
+          System.out.println("Gissning: 0 (jämn) eller 1 (udda) ");
+          int guessNumber = key.nextInt();
+
 
           //Omvandla det random nummret vi fick till
           // att ge ut antingen Cho(jämn) eller Han(udda)
@@ -41,6 +45,7 @@ public class Player
             guess = "Cho (jämn)";
           else
             guess = "Han (udda)";  
+
       }
 
       /**
@@ -83,4 +88,5 @@ public class Player
           {
               return points;
           }
+
 }
