@@ -9,20 +9,20 @@ package Examination_3;
   private String jobTitle;
   private String firstName;
   private String lastName;
-  private String city;
-  private int age;
-  private double hourPay;
+  private String stad;
+  private int alder;
+  private double lonPerTim;
   private int hourWeek;
 
-  public Employe(String emplyerId, String jobTitle, String firstName, String lastName, String city, int age,
-                  double hourPay, int hourWeek) {
+  public Employe(String emplyerId, String jobTitle, String firstName, String lastName, String stad, int alder,
+                  double lonPerTim, int hourWeek) {
       this.emplyerId = emplyerId;
       this.jobTitle = jobTitle;
       this.firstName = firstName;
       this.lastName = lastName;
-      this.city = city;
-      this.age = age;
-      this.hourPay = hourPay;
+      this.stad = stad;
+      this.alder = alder;
+      this.lonPerTim = lonPerTim;
       this.hourWeek = hourWeek;
   }
 //    public Employee(){}
@@ -67,34 +67,34 @@ package Examination_3;
       this.lastName = lastName;
     }
 
-  public String getCity() 
+  public String getstad() 
     {
-      return city;
+      return stad;
     }
 
-  public void setCity(String city) 
+  public void setstad(String stad) 
     {
-      this.city = city;
+      this.stad = stad;
     }
 
-  public int getAge() 
+  public int getalder() 
     {
-      return age;
+      return alder;
     }
 
-  public void setAge(int age) 
+  public void setalder(int alder) 
     {
-      this.age = age;
+      this.alder = alder;
     }
 
-  public double getHourPay() 
+  public double getlonPerTim() 
     {
-      return hourPay;
+      return lonPerTim;
     }
 
-  public void setHourPay(double hourPay) 
+  public void setlonPerTim(double lonPerTim) 
     {
-      this.hourPay = hourPay;
+      this.lonPerTim = lonPerTim;
     }
 
   public int getHourWeek() 
@@ -115,9 +115,9 @@ package Examination_3;
                       " FIRST NAME " + firstName +
                       " LAST NAME " + lastName +
                       " JOB TITLE " + jobTitle +
-                      " CITY " + city +
-                      " AGE " + age +
-                      " PAY/H " + hourPay +
+                      " stad " + stad +
+                      " alder " + alder +
+                      " PAY/H " + lonPerTim +
                       " H/WEEK " + hourWeek;
   }
 

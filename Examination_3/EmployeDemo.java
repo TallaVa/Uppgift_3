@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class EmployeDemo
 {
     private static Scanner scanner = new Scanner(System.in);
-    private static Employe employeeList[] = new Employe[50];
+    private static Employe employeeList[] = new Employe[20];
     private static int index = 0;
 
 
@@ -42,14 +42,16 @@ public class EmployeDemo
                 case 5:
                     quit = true;
                     break;
+                default:
+                    printInstructions();
             }
         }
     }
 
-    private static void printEmployeeList(Employe[] employees) {
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null)
-                System.out.println(employees[i].toString());
+    private static void printEmployeeList(Employe[] anstallda) {
+        for (int i = 0; i < anstallda.length; i++) {
+            if (anstallda[i] != null)
+                System.out.println(anstallda[i].toString());
         }
     }
 
@@ -63,16 +65,16 @@ public class EmployeDemo
         System.out.println("\t 5 - To quit.");
     }
 
-    public static boolean idOnFile(Employe[] employees) {
+    public static boolean idOnFile(Employe[] anstallda) {
         boolean isDuplicate = false;
 
-        for (int i = 0; i < employees.length; i++) 
+        for (int i = 0; i < anstallda.length; i++) 
         {
-            for (int j = i + 1; j < employees.length; j++) 
+            for (int j = i + 1; j < anstallda.length; j++) 
             {
-                if (employees[i] != null && employees[j] != null)
+                if (anstallda[i] != null && anstallda[j] != null)
                 {
-                    if (employees[i].getEmplyerId().equals(employees[j].getEmplyerId())) 
+                    if (anstallda[i].getEmplyerId().equals(anstallda[j].getEmplyerId())) 
                     {
                         isDuplicate = true;
                     }
@@ -96,25 +98,25 @@ public class EmployeDemo
     }
 
 
-    public static void addNewEmplyee(Employe[] employees, int i) {
+    public static void addNewEmplyee(Employe[] anstallda, int i) {
 
-        System.out.print("Enter the employees ID: ");
+        System.out.print("Enter the anstallda ID: ");
         String employeeId = scanner.nextLine();
 
 
-        System.out.print("Enter the employees first name: ");
+        System.out.print("Enter the anstallda first name: ");
         String employeeFirstName = scanner.nextLine();
 
-        System.out.print("Enter the employees last name: ");
+        System.out.print("Enter the anstallda last name: ");
         String employeeLastName = scanner.nextLine();
 
-        System.out.print("Enter the employees age: ");
+        System.out.print("Enter the anstallda age: ");
         String employeeAge = scanner.nextLine();
 
-        System.out.print("Enter the employees city: ");
+        System.out.print("Enter the anstallda city: ");
         String employeeCity = scanner.nextLine();
 
-        System.out.print("Enter the employees job title: ");
+        System.out.print("Enter the anstallda job title: ");
         String employeeJob = scanner.nextLine();
 
         System.out.print("Enter how many hours does this employee work in a week: ");
@@ -123,7 +125,7 @@ public class EmployeDemo
         System.out.print("Enter how much does this employee get payed by the hour: ");
         String employeePay = scanner.nextLine();
 
-        employees[i] = new Employe(employeeId, employeeJob, employeeFirstName, employeeLastName, employeeCity, Integer.parseInt(employeeAge), Integer.parseInt(employeePay), Integer.parseInt(employeeHourWeek));
+        anstallda[i] = new Employe(employeeId, employeeJob, employeeFirstName, employeeLastName, employeeCity, Integer.parseInt(employeeAge), Integer.parseInt(employeePay), Integer.parseInt(employeeHourWeek));
 
 
     }
