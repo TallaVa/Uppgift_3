@@ -5,33 +5,36 @@ import java.util.Scanner;
 public class EmployeDemo
 {
     private static Scanner scanner = new Scanner(System.in);
-    private static Employe employeeList[] = new Employe[20];
+    private static Employe employeeArray[] = new Employe[20];
     private static int index = 0;
 
 
     public static void main(String[] args) {
 
 
-        System.out.println("Hello");
-        boolean quit = false;
-        int choice = 0;
+        System.out.println("Välj ett av nedan choise för att gå vidare. avsluta med 5 " +
+                            " eller 0 för att se menyn igen");
+        boolean exit = false;
+        int choise = 0;
 
 
         printInstructions();
-        while (!quit) {
-            System.out.println("Enter your choice: ");
-            choice = scanner.nextInt();
+        while (!exit) 
+        {
+            System.out.println("Enter your choise: ");
+            choise = scanner.nextInt();
             scanner.nextLine();
 
-            switch (choice) {
+            switch (choise) 
+            {
                 case 0:
-                    printInstructions();
+                    exit = true;
                     break;
                 case 1:
-                    printEmployeeList(employeeList);
+                    addEmployee();
                     break;
                 case 2:
-                    addEmployee();
+                    //changeEmployee();
                     break;
                 case 3:
                     removeEmployee();
@@ -40,15 +43,30 @@ public class EmployeDemo
                     searchForEmployee();
                     break;
                 case 5:
-                    quit = true;
+                    //printWeekPay();
                     break;
+                case 6:
+                    //searchForArbetsTitel();
+                    break;
+                case 7:
+                    //searchArbetsTitel();
+                case 8:
+                    printemployeeArray(employeeArray);
+                    break;
+                case 9:
+                    //searchLessPay();
+
+                case 10:
+                    printInstructions();
+                    break;
+
                 default:
                     printInstructions();
             }
         }
     }
 
-    private static void printEmployeeList(Employe[] anstallda) {
+    private static void printemployeeArray(Employe[] anstallda) {
         for (int i = 0; i < anstallda.length; i++) {
             if (anstallda[i] != null)
                 System.out.println(anstallda[i].toString());
@@ -56,13 +74,17 @@ public class EmployeDemo
     }
 
     public static void printInstructions() {
-        System.out.println("\nPress ");
-        System.out.println("\t 0 - To print choice options.");
-        System.out.println("\t 1 - To print the contact list.");
-        System.out.println("\t 2 - To add a new contact.");
-        System.out.println("\t 3 - To remove a contact.");
-        System.out.println("\t 4 - To search for a contact.");
-        System.out.println("\t 5 - To quit.");
+        System.out.println("\n -- Meny -- ");
+        System.out.println("\t 1 - Lägg till anställd.");
+        System.out.println("\t 2 - Ändra anstälds arbets titel.");
+        System.out.println("\t 3 - Ta bort anställd.");
+        System.out.println("\t 4 - Sök anställd.");
+        System.out.println("\t 5 - Kolla veckolön för anställd.");
+        System.out.println("\t 6 - Sök alla anställda med samma arbetstitel.");
+        System.out.println("\t 7 - Summera alla med samma arbetstitel.");
+        System.out.println("\t 8 - Lista alla anställda.");
+        System.out.println("\t 9 - Sök efter anställd med lägre lön.");
+        System.out.println("\t 0 - Avsluta.");
     }
 
     public static boolean idOnFile(Employe[] anstallda) {
@@ -74,7 +96,7 @@ public class EmployeDemo
             {
                 if (anstallda[i] != null && anstallda[j] != null)
                 {
-                    if (anstallda[i].getEmplyerId().equals(anstallda[j].getEmplyerId())) 
+                    if (anstallda[i].getemployeID().equals(anstallda[j].getemployeID())) 
                     {
                         isDuplicate = true;
                     }
@@ -87,11 +109,11 @@ public class EmployeDemo
 
     public static void addEmployee() 
     {
-        addNewEmplyee(employeeList, index);
-        if (idOnFile(employeeList)) 
+        addNewEmplyee(employeeArray, index);
+        if (idOnFile(employeeArray)) 
         {
             System.out.println("Duplicate, change the ID");
-            addNewEmplyee(employeeList, index);
+            addNewEmplyee(employeeArray, index);
         }
         index++;
 
@@ -117,7 +139,7 @@ public class EmployeDemo
         String employeeCity = scanner.nextLine();
 
         System.out.print("Enter the anstallda job title: ");
-        String employeeJob = scanner.nextLine();
+        String employeeTitle = scanner.nextLine();
 
         System.out.print("Enter how many hours does this employee work in a week: ");
         String employeeHourWeek = scanner.nextLine();
@@ -125,14 +147,20 @@ public class EmployeDemo
         System.out.print("Enter how much does this employee get payed by the hour: ");
         String employeePay = scanner.nextLine();
 
-        anstallda[i] = new Employe(employeeId, employeeJob, employeeFirstName, employeeLastName, employeeCity, Integer.parseInt(employeeAge), Integer.parseInt(employeePay), Integer.parseInt(employeeHourWeek));
+        anstallda[i] = new Employe(employeeId, employeeTitle, employeeFirstName, employeeLastName, employeeCity, 
+                                    Integer.parseInt(employeeAge), 
+                                    Integer.parseInt(employeePay), 
+                                    Integer.parseInt(employeeHourWeek));
 
 
     }
 
 
     public static void removeEmployee() {
-        System.out.println("Not implemented");
+        System.out.println("vem tar vi bort ? :");
+        String aNumer = scanner.nextLine();
+        employeeArray.length(aNumer);
+
     }
 
     public static void searchForEmployee() {

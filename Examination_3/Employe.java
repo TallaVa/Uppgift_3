@@ -5,66 +5,67 @@ package Examination_3;
 
  public class Employe
  {
-  private String emplyerId;
-  private String jobTitle;
-  private String firstName;
-  private String lastName;
+  private String employeID;
+  private String arbetsTitel;
+  private String fNamn;
+  private String eNamn;
   private String stad;
   private int alder;
   private double lonPerTim;
-  private int hourWeek;
+  private int timVecka;
 
-  public Employe(String emplyerId, String jobTitle, String firstName, String lastName, String stad, int alder,
-                  double lonPerTim, int hourWeek) {
-      this.emplyerId = emplyerId;
-      this.jobTitle = jobTitle;
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.stad = stad;
-      this.alder = alder;
+  public Employe(String employeID, String arbetsTitel, String fNamn, String eNamn, String stad, int alder,
+                  double lonPerTim, int timVecka) 
+  {
+      this.employeID = employeID;
+      this.arbetsTitel = arbetsTitel;
+      this.fNamn = fNamn;
+      this.eNamn = eNamn;  
+      this.alder = alder;          
       this.lonPerTim = lonPerTim;
-      this.hourWeek = hourWeek;
+      this.timVecka = timVecka;
+      this.stad = stad;
   }
 //    public Employee(){}
 
-  public String getEmplyerId() 
+  public String getemployeID() 
     {
-      return emplyerId;
+      return employeID;
     }
 
-  public void setEmplyerId(String emplyerId) 
+  public void setemployeID(String employeID) 
     {
-      this.emplyerId = emplyerId;
+      this.employeID = employeID;
     }
 
-  public String getJobTitle() 
+  public String getarbetsTitel() 
     {
-      return jobTitle;
+      return arbetsTitel;
     }
 
-  public void setJobTitle(String jobTitle) 
+  public void setarbetsTitel(String arbetsTitel) 
     {
-      this.jobTitle = jobTitle;
+      this.arbetsTitel = arbetsTitel;
     }
 
-  public String getFirstName() 
+  public String getfNamn() 
     {
-      return firstName;
+      return fNamn;
     }
 
-  public void setFirstName(String firstName) 
+  public void setfNamn(String fNamn) 
     {
-      this.firstName = firstName;
+      this.fNamn = fNamn;
     }
 
-  public String getLastName() 
+  public String geteNamn() 
     {
-      return lastName;
+      return eNamn;
     }
 
-  public void setLastName(String lastName) 
+  public void seteNamn(String eNamn) 
     {
-      this.lastName = lastName;
+      this.eNamn = eNamn;
     }
 
   public String getstad() 
@@ -97,28 +98,28 @@ package Examination_3;
       this.lonPerTim = lonPerTim;
     }
 
-  public int getHourWeek() 
+  public int gettimVecka() 
     {
-      return hourWeek;
+      return timVecka;
     }
 
-  public void setHourWeek(int hourWeek) 
+  public void settimVecka(int timVecka) 
     {
-      this.hourWeek = hourWeek;
+      this.timVecka = timVecka;
     }
 
-  @Override
+ // @Override
   public String toString() 
   {
       return
-              "ID " + emplyerId +
-                      " FIRST NAME " + firstName +
-                      " LAST NAME " + lastName +
-                      " JOB TITLE " + jobTitle +
-                      " stad " + stad +
-                      " alder " + alder +
-                      " PAY/H " + lonPerTim +
-                      " H/WEEK " + hourWeek;
+              "ID " + employeID +
+                      " För Namn " + fNamn +
+                      " Efter Namn " + eNamn +
+                      " Arbetstitel " + arbetsTitel +
+                      " Stad " + stad +
+                      " Ålder " + alder +
+                      " Lön per timme " + lonPerTim +
+                      " Timmar per veckan " + timVecka;
   }
 
        
