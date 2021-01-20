@@ -34,19 +34,19 @@ public class EmployeDemo
                     addEmployee();
                     break;
                 case 2:
-                    //changeEmployee();
+                    modifyEmployee(employeeArray);
                     break;
                 case 3:
-                    removeEmployee();
+                    removeEmployee(employeeArray);
                     break;
                 case 4:
-                    searchForEmployee();
+                    searchForEmployee(employeeArray);
                     break;
                 case 5:
-                    //printWeekPay();
+                    printVeckoLon(employeeArray);
                     break;
                 case 6:
-                    //searchForArbetsTitel();
+                    searchForArbetsTitel(employeeArray);
                     break;
                 case 7:
                     //searchArbetsTitel();
@@ -75,16 +75,17 @@ public class EmployeDemo
 
     public static void printInstructions() {
         System.out.println("\n -- Meny -- ");
-        System.out.println("\t 1 - Lägg till anställd.");
-        System.out.println("\t 2 - Ändra anstälds arbets titel.");
-        System.out.println("\t 3 - Ta bort anställd.");
-        System.out.println("\t 4 - Sök anställd.");
-        System.out.println("\t 5 - Kolla veckolön för anställd.");
-        System.out.println("\t 6 - Sök alla anställda med samma arbetstitel.");
-        System.out.println("\t 7 - Summera alla med samma arbetstitel.");
-        System.out.println("\t 8 - Lista alla anställda.");
-        System.out.println("\t 9 - Sök efter anställd med lägre lön.");
         System.out.println("\t 0 - Avsluta.");
+        System.out.println("\t 1  - Lägg till anställd.");
+        System.out.println("\t 2  - Ändra anstälds arbets titel.");
+        System.out.println("\t 3  - Ta bort anställd.");
+        System.out.println("\t 4  - Sök anställd.");
+        System.out.println("\t 5  - Kolla veckolön för anställd.");
+        System.out.println("\t 6  - Sök alla anställda med samma arbetstitel.");
+        System.out.println("\t 7  - Summera alla med samma arbetstitel.");
+        System.out.println("\t 8  - Lista alla anställda.");
+        System.out.println("\t 9  - Sök efter anställd med lägre lön.");
+        System.out.println("\t 10 - Visa meny.");        
     }
 
     public static boolean idOnFile(Employe[] anstallda) {
@@ -151,19 +152,112 @@ public class EmployeDemo
                                     Integer.parseInt(employeeAge), 
                                     Integer.parseInt(employeePay), 
                                     Integer.parseInt(employeeHourWeek));
+        
+    }
 
+
+    public static void removeEmployee(Employe[] anstallda) 
+    {
+        
+        System.out.println("Ange ID på anställd du önskar ta bort: ");
+        String empID = scanner.nextLine();
+        
+        for (int i = 0; i < anstallda.length; i++)
+        {
+            if (anstallda[i] != null && anstallda[i].getemployeID().equalsIgnoreCase(empID))
+            {
+                anstallda[i] = null;
+            break;
+            }
+
+                if(i == anstallda.length -1)
+                {
+                    System.out.println("Anställd existerar ej.");
+                }
+        }
 
     }
 
 
-    public static void removeEmployee() {
-        System.out.println("vem tar vi bort ? :");
-        String aNumer = scanner.nextLine();
-        employeeArray.length(aNumer);
+    public static void modifyEmployee(Employe[] anstallda)
+    {
+        System.out.println("Ange ID på anställd du önskar ändra arbets titel på: ");
+        String empID = scanner.nextLine();
+        System.out.println("Ange ny arbetstitel: ");
+        String nyTitel = scanner.nextLine();
+        
+        for (int i = 0; i < anstallda.length; i++)
+        {
+            if (anstallda[i] != null && anstallda[i].getemployeID().equalsIgnoreCase(empID))
+            {
+                anstallda[i].setarbetsTitel(nyTitel);
+                
+            }         
+                
+        }
 
     }
 
-    public static void searchForEmployee() {
-        System.out.println("Not implemented");
+
+    public static void searchForEmployee(Employe[] anstallda) 
+    {
+        System.out.println("Ange ID på anställd du önskar ändra arbets titel på: ");
+        String empID = scanner.nextLine();
+
+        for (int i = 0; i < anstallda.length; i++)
+        {
+            if (anstallda[i] != null && anstallda[i].getemployeID().equalsIgnoreCase(empID))
+            {
+                System.out.println("ID:\t\t" + anstallda[i].getemployeID());
+                System.out.println("Arbetstitel:\t" + anstallda[i].getarbetsTitel());
+                System.out.println("För namn:\t" + anstallda[i].getfNamn());
+                System.out.println("Efter namn:\t" + anstallda[i].geteNamn());
+                System.out.println("Ålder:\t\t" + anstallda[i].getalder());
+                System.out.println("Timmlön:\t" + anstallda[i].getlonPerTim());
+                System.out.println("Arbetad tid:\t" + anstallda[i].gettimVecka());
+                System.out.println("Stad:\t\t" + anstallda[i].getstad());
+            }
+        }
     }
+
+
+    public static void searchForArbetsTitel(Employe[] anstallda)
+    {
+        System.out.println("Ange arbetstitel du vill söka efter: ");
+        String empTitel = scanner.nextLine();
+        
+        int count = 0;
+        
+        for (int i = 0; i < anstallda.length; i++) 
+        {
+            if (anstallda[i] != null && anstallda[i].getarbetsTitel().equalsIgnoreCase(empTitel))
+            {
+                count++;
+            }          
+      
+        }
+        
+        System.out.println("Det finns totalt " + count + " anställda med den arbetstiteln.");
+    }
+
+
+
+    public static void printVeckoLon(Employe[] anstallda)
+    {
+        System.out.println("Ange ID för den som du vill se vecko lön för: ");
+        String empID = scanner.nextLine();
+
+        for (int i = 0; i < anstallda.length; i++)
+        {
+            if (anstallda[i] != null && anstallda[i].getemployeID().equalsIgnoreCase(empID))
+            {
+                System.out.print(anstallda[i].getfNamn());
+                System.out.println(" har en vecko lön på : " 
+                                    + anstallda[i].getlonPerTim()*anstallda[i].gettimVecka()
+                                    + " kr");
+            }
+    
+        }
+    }       
+        
 }

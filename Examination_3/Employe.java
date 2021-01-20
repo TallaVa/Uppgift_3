@@ -15,7 +15,7 @@ package Examination_3;
   private int timVecka;
 
   public Employe(String employeID, String arbetsTitel, String fNamn, String eNamn, String stad, int alder,
-                  double lonPerTim, int timVecka) 
+                  int lonPerTim, int timVecka) 
   {
       this.employeID = employeID;
       this.arbetsTitel = arbetsTitel;
@@ -25,6 +25,7 @@ package Examination_3;
       this.lonPerTim = lonPerTim;
       this.timVecka = timVecka;
       this.stad = stad;
+
   }
 //    public Employee(){}
 
@@ -108,19 +109,19 @@ package Examination_3;
       this.timVecka = timVecka;
     }
 
- // @Override
+ @Override
   public String toString() 
   {
       return
-              "ID " + employeID +
-                      " För Namn " + fNamn +
-                      " Efter Namn " + eNamn +
-                      " Arbetstitel " + arbetsTitel +
-                      " Stad " + stad +
-                      " Ålder " + alder +
-                      " Lön per timme " + lonPerTim +
-                      " Timmar per veckan " + timVecka;
+              "ID " + "\t\t" + employeID + 
+                      "\nFör namn \t" + fNamn +
+                     // " Efter Namn " + eNamn +
+                      "\nArbetstitel \t" + arbetsTitel;
+                     // " Stad " + stad +
+                     // " Ålder " + alder +
+                     // " Lön per timme " + lonPerTim +
+                     // " Timmar per veckan " + timVecka;
   }
 
        
- }
+}
