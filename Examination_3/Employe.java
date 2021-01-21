@@ -1,6 +1,7 @@
 package Examination_3;
 /**
  * Examination 3 Employe list
+ * 
  */
 
  public class Employe
@@ -14,6 +15,18 @@ package Examination_3;
   private double lonPerTim;
   private int timVecka;
 
+
+  /**
+   * Konstruktor med alla fälten som ska användas.
+   * @param employeID     Anställds ID.
+   * @param arbetsTitel   Anställds arbetstitel.
+   * @param fNamn         Anställds förnamn.
+   * @param eNamn         Anställds efternamn.
+   * @param stad          Anställds bostads ort.
+   * @param alder         Anställds ålder.
+   * @param lonPerTim     Anställds lön per timme.
+   * @param timVecka      Anställds arbetade timmar per vecka.
+   */
   public Employe(String employeID, String arbetsTitel, String fNamn, String eNamn, String stad, int alder,
                   int lonPerTim, int timVecka) 
   {
@@ -27,29 +40,53 @@ package Examination_3;
       this.stad = stad;
 
   }
-//    public Employee(){}
 
+  /**
+   * getemployeID metoden reurnerar
+   * andställdes ID
+   * @return Värdet i employeID fältet.
+   */
   public String getemployeID() 
     {
       return employeID;
     }
 
-  public void setemployeID(String employeID) 
+    /**
+     * setemployeID metoden sätter 
+     * den anställdas ID
+     * @param employeID 
+     */
+    public void setemployeID(String employeID) 
     {
       this.employeID = employeID;
     }
 
-  public String getarbetsTitel() 
+    /**
+     * getarbetsTitel metoden returnerar 
+     * anställdes arbetsTiteln
+     * @return Värdet i arbetsTitel
+     */
+    public String getarbetsTitel() 
     {
       return arbetsTitel;
     }
 
-  public void setarbetsTitel(String arbetsTitel) 
+    /**
+     * setarbetsTitel metoden sätter
+     * den anställdas arbetstitel
+     * @param arbetsTitel 
+     */
+    public void setarbetsTitel(String arbetsTitel) 
     {
       this.arbetsTitel = arbetsTitel;
     }
 
-  public String getfNamn() 
+    /**
+     * getfNamn metoden returnerar
+     * anställdes Förnamn
+     * @return
+     */
+    public String getfNamn() 
     {
       return fNamn;
     }
