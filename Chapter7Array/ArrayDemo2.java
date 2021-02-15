@@ -2,7 +2,6 @@ package Chapter7Array;
 
 import java.util.*;
 
-import Examination_3.Employe;
 
 /**
  * det här programmet kommer visa värden som sparats i arryn
@@ -32,6 +31,8 @@ import Examination_3.Employe;
         // Visa de slagna värden.
         for (int index = 0; index < EMPLOYEES; index++)
             System.out.println(hours[index]);
+
+        key.close();
 
     }
 }
