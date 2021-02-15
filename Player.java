@@ -46,6 +46,8 @@ public class Player
           else
             guess = "Han (udda)";  
 
+        key.close();
+
       }
 
       /**
