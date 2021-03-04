@@ -1,3 +1,5 @@
+import org.graalvm.compiler.core.common.util.IntList;
+
 //import java.util.Scanner;
 
 public class CheckPoint
@@ -43,7 +45,7 @@ public class CheckPoint
 
     /**
      * 7.12
-     */
+    
         int[] a = { 1, 2, 3, 4, 5, 6, 7 };
         int[] b = new int[7];
         
@@ -53,6 +55,22 @@ public class CheckPoint
 
         System.out.println(a[index] + "\n" + b[index]);
         }
-        
+    */
+
+    /**
+     * 7.13
+     */
+
+        //Create the array
+        double[] numbers = new double[100];
+
+        //Pass the array
+        myMethod(numbers);
+
+        public static void myMethod(double[] array)
+        {
+
+        }
+
     }
 }
