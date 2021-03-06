@@ -1,4 +1,4 @@
-import org.graalvm.compiler.core.common.util.IntList;
+import java.util.Scanner;
 
 //import java.util.Scanner;
 
@@ -58,19 +58,36 @@ public class CheckPoint
     */
 
     /**
-     * 7.13
+     * 7.13 - 7.14
      */
+        //Variable
+        int user = 0;
+
+        //create a scnner
+        Scanner key = new Scanner(System.in);
+
+        //Ask the user for the index.
+        System.out.print("How many elements?: ");
+        user = key.nextInt();
 
         //Create the array
-        double[] numbers = new double[100];
+        int[] numbers = new int[user];
 
         //Pass the array
         myMethod(numbers);
 
-        public static void myMethod(double[] array)
+        key.close();
+    }
+        /**
+         * The myMethod accepts a reference
+         * to an array its argument.
+         * @param array
+         */
+        private static void myMethod(int[] array)
         {
-
+            //Display the array elements.
+            for (int index = 0; index < array.length; index++)
+                System.out.println(array[index] + " ");
         }
 
-    }
 }
