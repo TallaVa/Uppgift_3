@@ -1,4 +1,4 @@
-package Code _Listing7-10;
+package Code_Listing7_10;
 
 /**
  * This class keeps the sales figures for a number of
