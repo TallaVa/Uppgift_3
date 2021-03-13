@@ -50,7 +50,7 @@ public class Sales
          for (int i = 0; i < array.length; i++ )
          {
             input = JOptionPane.showInputDialog(
-                 "Enter the sales for day " + (i+i) + ".");
+                 "Enter the sales for day " + (i+1) + ".");
             array[i] = Double.parseDouble(input);
          }
      }
