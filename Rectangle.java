@@ -25,12 +25,12 @@ public class Rectangle
     /**
      * The setLength method stores a value in the 
      * length field.
-     * @param len The value to store in length.
+     * @param langd The value to store in length.
      */
 
-    public void setLength(double len)
+    public void setLength(double langd)
     {
-        length = len;
+        length = langd;
     }
 
     /**
