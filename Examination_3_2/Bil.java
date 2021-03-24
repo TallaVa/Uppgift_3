@@ -39,7 +39,47 @@ public class Bil
         this.drivmedel = drivmedel;
         this.pris = pris;
         this.ovrigt = ovrigt;
+    }
 
+    /**
+     * getregNr metoden returnerar
+     * bilens regnummer.
+     * @return Bilens registreringsnummer.
+     */
+    public String getregNr()
+    {
+        return regNr;
+    }
+
+    /**
+     * setregNr metoden används för att
+     * registrera registreringsnummret som 
+     * användaren anger.
+     * @param regNr Bilens registreringsnummer.
+     */
+    public void setregNr(String regNr)
+    {
+        this.regNr = regNr;
+    }
+
+    /**
+     * getmarke metoden returnerar
+     * bilens fabrikat.
+     * @return bilens fabrikat/märke.
+     */
+    public String getmarke()
+    {
+        return marke;
+    }
+
+    /**
+     * setmarke metoden används för att 
+     * registrera fabrikat/märket på bilen.
+     * @param marke bilens fabrikat/märke.
+     */
+    public void setmarke(String marke)
+    {
+        this.marke = marke;
     }
 }
 
