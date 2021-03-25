@@ -5,9 +5,9 @@ public class Bil
     private String regNr;
     private String marke;
     private String model;
-    private int ortal;
+    private int artal;
     private int miltal;
-    private char vexel;
+    private char vaxel;
     private String farg;
     private String drivmedel;
     private double pris;
@@ -18,23 +18,23 @@ public class Bil
      * @param regNr
      * @param marke
      * @param model
-     * @param ortal
+     * @param artal
      * @param miltal
-     * @param vexel
+     * @param vaxel
      * @param farg
      * @param drivmedel
      * @param pris
      * @param ovrigt
      */
-    public Bil(String regNr, String marke, String model, int ortal, int miltal, char vexel, String farg,
+    public Bil(String regNr, String marke, String model, int artal, int miltal, char vaxel, String farg,
                 String drivmedel, double pris, String ovrigt)
     {
         this.regNr = regNr;
         this.marke = marke;
         this.model = model;
-        this.ortal = ortal;
+        this.artal = artal;
         this.miltal = miltal;
-        this.vexel = vexel;
+        this.vaxel = vaxel;
         this.farg = farg;
         this.drivmedel = drivmedel;
         this.pris = pris;
@@ -81,5 +81,166 @@ public class Bil
     {
         this.marke = marke;
     }
+
+    /**
+     * getmodel metoden returnerar
+     * bilens model.
+     * @return Bilens model.
+     */
+    public String getmodel()
+    {
+        return model;
+    }
+
+    /**
+     * setmodel metoden används för att
+     * registrera model på bilen.
+     * @param model Bilens märke.
+     */
+    public void setmodel(String model)
+    {
+        this.model = model;
+    }
+
+    /**
+     * getartal metoden returnerar
+     * bilens årtal.
+     * @return Bilens årtal.
+     */
+    public int getartal()
+    {
+        return artal;
+    }
+
+    /**
+     * setartal metoden sätter årtal
+     * på bilen.
+     * @param artal Bilens årtal.
+     */
+    public void setartal(int artal)
+    {
+        this.artal = artal;
+    }
+
+    /**
+     * getmiltal metoden returnerar
+     * bilens miltal.
+     * @return Bilens miltal.
+     */
+    public int getmiltal()
+    {
+        return miltal;
+    }
+
+    /**
+     * setmiltal metoden sätter miltal
+     * på bilen.
+     * @param miltal Bilens miltal
+     */
+    public void setmiltal(int miltal)
+    {
+        this.miltal = miltal;
+    }
+
+    /**
+     * getvaxel returnerar om bilen
+     * har en manuel växellåda eller automatisk
+     * @return Bilens växellåda.
+     */
+    public char getvaxel()
+    {
+        return vaxel;
+    }
+
+    /**
+     * setvaxel metoden sätter vilken
+     * växellåda bilen har.
+     * @param vaxel Bilens växellåda
+     */
+    public void setvaxel(char vaxel)
+    {
+        this.vaxel = vaxel;
+    }
+
+    /**
+     * getfarg metoden returnerar
+     * bilens färg
+     * @return Bilens färg.
+     */
+    public String getfarg()
+    {
+        return farg;
+    }
+
+    /**
+     * setfarg metoden sätter 
+     * bilens färg
+     * @param farg Bilens färg.
+     */
+    public void setfarg(String farg)
+    {
+        this.farg = farg;
+    }
+
+    /**
+     * getdrivmedel returnerar bilens
+     * drivemedel.
+     * @return Bilens drivmedel.
+     */
+    public String getdrivmedel()
+    {
+        return drivmedel;
+    }
+
+    /**
+     * setdrivmedel metoden sätter bilens
+     * drivmedel.
+     * @param drivmedel Bilens drivmedel.
+     */
+    public void setdrivmedel(String drivmedel)
+    {
+        this.drivmedel = drivmedel;
+    }
+
+    /**
+     * getpris returnerar bilens 
+     * pris.
+     * @return Bilens pris.
+     */
+    public double getpris()
+    {
+        return pris;
+    }
+
+    /**
+     * setpris metoden sätter priset
+     * på bilen.
+     * @param pris Bilens pris.
+     */
+    public void setpris(double pris)
+    {
+        this.pris = pris;
+    }
+    
+    /**
+     * getovrigt returenerar en string
+     * där man kan lägga till övrig information.
+     * @return Övrig information.
+     */
+    public String gerovrigt()
+    {
+        return ovrigt;
+    }
+
+    /**
+     * setovrigt metoden sätter 
+     * övrigt information om bilen.
+     * @param ovrigt Övrig information.
+     */
+    public void setovrigt(String ovrigt)
+    {
+        this.ovrigt = ovrigt;
+    }
+
 }
 
