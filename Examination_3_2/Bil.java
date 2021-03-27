@@ -7,7 +7,7 @@ public class Bil
     private String model;
     private int artal;
     private int miltal;
-    private char vaxel;
+    private String vaxel;
     private String farg;
     private String drivmedel;
     private double pris;
@@ -26,7 +26,7 @@ public class Bil
      * @param pris
      * @param ovrigt
      */
-    public Bil(String regNr, String marke, String model, int artal, int miltal, char vaxel, String farg,
+    public Bil(String regNr, String marke, String model, int artal, int miltal, String vaxel, String farg,
                 String drivmedel, double pris, String ovrigt)
     {
         this.regNr = regNr;
@@ -147,7 +147,7 @@ public class Bil
      * har en manuel växellåda eller automatisk
      * @return Bilens växellåda.
      */
-    public char getvaxel()
+    public String getvaxel()
     {
         return vaxel;
     }
@@ -157,7 +157,7 @@ public class Bil
      * växellåda bilen har.
      * @param vaxel Bilens växellåda
      */
-    public void setvaxel(char vaxel)
+    public void setvaxel(String vaxel)
     {
         this.vaxel = vaxel;
     }
@@ -240,6 +240,21 @@ public class Bil
     public void setovrigt(String ovrigt)
     {
         this.ovrigt = ovrigt;
+    }
+
+    @Override
+    public String toString()
+    {
+        return   "Regnr     : " + "\t\t" + regNr
+                +"\nMärke     : " + "\t\t" + marke
+                +"\nModel     : " + "\t\t" + model
+                +"\nÅrtaö     : " + "\t\t" + artal
+                +"\nMiltal    : " + "\t\t" + miltal
+                +"\nM/A       : " + "\t\t" + vaxel
+                +"\nFärg      : " + "\t\t" + farg
+                +"\nDrivmedel : " + "\t\t" + drivmedel
+                +"\nPris      : " + "\t\t" + pris
+                +"\nÖvrigt    : " + "\t\t" + ovrigt + "\n"; 
     }
 
 }
