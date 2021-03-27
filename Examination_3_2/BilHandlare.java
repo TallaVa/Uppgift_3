@@ -6,11 +6,12 @@ public class BilHandlare
 {
 
    //Privata variabler som kommer användas i klassen.
-    private static Scanner scanner = new Scanner(System.in);
+    private static Scanner keyboard = new Scanner(System.in);
 
     //Skapa array som ska användas för att hålla alla  bilar.
     // kommer ha plats för 20 bilar.
     private static Bil bilarArray[] = new Bil[20];
+    private static int index = 0;
 
   
 
@@ -34,9 +35,7 @@ public class BilHandlare
 
    
                            
-   // Välkomst text
-      System.out.println("Välj i menyn: ");
-      
+   // Välkomst text   
       boolean exit = false;
       int val = 0;
 
@@ -44,17 +43,22 @@ public class BilHandlare
       utskriftMeny();
       while (!exit)
       {
-         System.out.println("välj i menyn: ");
-         val = scanner.nextInt();
-         scanner.nextLine();
+         System.out.print("Välj i menyn: ");
+         val = keyboard
+.nextInt();
+         keyboard
+.nextLine();
 
          switch (val)
          {
             case 0:
-                  utskriftBilar(bilarArray);
+                  utskriftMeny();      
                   break;
             case 1:
-                  utskriftMeny();
+                  laggtillBil();
+                  break;            
+            case 2:
+                  utskriftBilar(bilarArray);
                   break;
             default:
                   utskriftMeny();
@@ -67,9 +71,91 @@ public class BilHandlare
 
 public static void utskriftMeny()
 {
-   System.out.println("\n -- Meny --");
-   System.out.println("\t 0 - skriv ut allt");
-   System.out.println("\t 1 . Visa meny igen.");
+   System.out.println("\n\t   -- Meny --");
+   System.out.println("\t 0 - Visa meny");
+   System.out.println("\t 1 - Lägg till ny Bil.");
+   System.out.println("\t 2 - Skriv ut allt i arrayn.");
+}
+
+/**
+ * regExisterar metoden kommer att kontrolera så det inte 
+ * finns dubbletter innan man kan lägga till nya bilar i
+ * arrayn.
+ * @param listaBilar
+ * @return Om det finns dublett eller inte.
+ */
+public static boolean regExisterar(Bil[] listaBilar)
+{
+   boolean existerar = false;
+
+   for (int i = 0; i < listaBilar.length; i++)
+   {
+      for (int j = i + 1; j < listaBilar.length; j++)
+      {
+         if (listaBilar[i] != null && listaBilar[j] != null)
+         {
+            if (listaBilar[i].getregNr().equals(listaBilar[j].getregNr()))
+            {
+               existerar = true;
+            }
+         }
+      }
+   }
+   return existerar;
+}
+
+public static void laggtillBil()
+{
+   laggTillNyBil(bilarArray, index);
+   if (regExisterar(bilarArray))
+   {
+      System.out.println("En bil existerar redan med samma regnr.");
+      laggTillNyBil(bilarArray, index);
+   }
+   index++;
+}
+
+public static void laggTillNyBil(Bil[] listaBilar, int i)
+{
+   System.out.println("Ange Bilens regnr: ");
+   String regNr = keyboard.nextLine();
+
+   System.out.println("Ange Bilens märke: ");
+   String marke = keyboard.nextLine();
+
+   System.out.println("Ange Bilens modell: ");
+   String model = keyboard.nextLine();
+
+   System.out.println("Ange Bilens artal: ");
+   String artal = keyboard.nextLine();
+
+   System.out.println("Ange Bilens miltal: ");
+   String miltal = keyboard.nextLine();
+
+   System.out.println("Ange Bilens Växellåda (M/A): ");
+   String vaxel = keyboard.nextLine();
+
+   System.out.println("Ange Bilens Färg: ");
+   String farg = keyboard.nextLine();
+
+   System.out.println("Ange Bilens drivmedel: ");
+   String drivmedel = keyboard.nextLine();
+
+   System.out.println("Ange Bilens pris: ");
+   String pris = keyboard.nextLine();
+
+   System.out.println("Ange övrig information: ");
+   String ovrigt = keyboard.nextLine();
+
+   if (regExisterar(bilarArray))
+   {
+      System.out.println("Existerar kanske");
+      laggTillNyBil(bilarArray, index);
+   }
+   else
+   {
+   listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
+   }
 }
 
 /**
