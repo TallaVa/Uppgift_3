@@ -10,7 +10,7 @@ public class BilHandlare
 
     //Skapa array som ska användas för att hålla alla  bilar.
     // kommer ha plats för 20 bilar.
-    private static Bil bilarArray[] = new Bil[20];
+    private static Bil bilarArray[] = new Bil[5];
     private static int index = 0;
 
   
@@ -24,16 +24,19 @@ public class BilHandlare
    // Bil 1.
    bilarArray[0] = new Bil("ASD123", "Volvo", "v50", Integer.parseInt("2005"), Integer.parseInt("2000"), 
                            "manuell", "grå", "bensin", Double.parseDouble("20000.00"), "-");
+                           
 
    //Bil 2.
    bilarArray[1] = new Bil("QWE123", "Saab", "9.3 2.2 TiD", Integer.parseInt("2000"), Integer.parseInt("2500"), 
                            "manuell", "vit", "diesel", Double.parseDouble("4000.00"), "-");
+                           
 
    //Bil 3.
    bilarArray[2] = new Bil("ZXC123", "Volvo", "v70", Integer.parseInt("2010"), Integer.parseInt("1200"), 
                            "manuell", "svart", "bensin", Double.parseDouble("60000.00"), "-");
+                           
 
-   
+   index = 3;
                            
    // Välkomst text   
       boolean exit = false;
@@ -147,15 +150,10 @@ public static void laggTillNyBil(Bil[] listaBilar, int i)
    System.out.println("Ange övrig information: ");
    String ovrigt = keyboard.nextLine();
 
-   if (regExisterar(bilarArray))
-   {
-      System.out.println("Existerar kanske");
-      laggTillNyBil(bilarArray, index);
-   }
-   else
-   {
+   //Lägget till infon till arrayn.
    listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
-   }
+ 
+   
 }
 
 /**
