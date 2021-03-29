@@ -54,10 +54,26 @@ public class BilHandlare
                   utskriftMeny();      
                   break;
             case 1:
+                  if(index <4 )
                   laggtillBil();
-                  break;            
+                  else
+                  {
+                     System.out.println("Listan är full." +
+                        " Ta bort bil för att lägga till ny bil.");
+                  }
+                  break; 
+                    
             case 2:
+                  andraMil(bilarArray);
+                  break;         
+            case 3:
+                  tabortBil(bilarArray);
+                  break;
+            case 4:
                   utskriftBilar(bilarArray);
+                  break;
+            case 9:
+                  exit = true;
                   break;
             default:
                   utskriftMeny();
@@ -67,13 +83,17 @@ public class BilHandlare
 
 
    }
-
+/**
+ * Skriver ut Menyn
+ */
 public static void utskriftMeny()
 {
    System.out.println("\n\t   -- Meny --");
    System.out.println("\t 0 - Visa meny");
-   System.out.println("\t 1 - Lägg till ny Bil.");
-   System.out.println("\t 2 - Skriv ut allt i arrayn.\n");
+   System.out.println("\t 1 - Lägg till ny bil.");
+   System.out.println("\t 2 - Ändra miltal på bil i listan.");
+   System.out.println("\t 3 - Ta bort bil.");
+   System.out.println("\t 4 - Skriv ut allt i arrayn.\n");
 }
 
 /**
@@ -103,6 +123,10 @@ public static boolean regExisterar(Bil[] listaBilar)
    return existerar;
 }
 
+/**
+ * laggtillBil dubbelkollar om identisk bil existerar
+ * så ett meddelande kan printas.
+ */
 public static void laggtillBil()
 {
    laggTillNyBil(bilarArray, index);
@@ -114,6 +138,13 @@ public static void laggtillBil()
    index++;
 }
 
+
+/**
+ * laggTillNyBil metoden används för att lägga till ny bil.
+ * användaren kommer få nedan frågor att svara på om nya bilen.
+ * @param listaBilar
+ * @param i
+ */
 public static void laggTillNyBil(Bil[] listaBilar, int i)
 {
   
@@ -147,23 +178,74 @@ public static void laggTillNyBil(Bil[] listaBilar, int i)
    System.out.println("Ange övrig information: ");
    String ovrigt = keyboard.nextLine();
 
-   //Lägget till infon till arrayn.
-   if (i < 4)
+   //Dubbelkollar så arrayn inte är "out of bounds"
+   // och då lägger in informationen man angav in i arrayn.
+   
+   if (index <= 4)
+      { 
+         for ( int j = 0; j < listaBilar.length; j++)
+         {
+            if (listaBilar[j] == null)
+            {
+               i = j;
+               listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
+               System.out.println("\tBil registrerat.\n");
+               utskriftMeny(); 
+            }
+         }   
+      } 
+   else if (index > 4 )
       {
-         listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
-         System.out.println("\tBil registrerat.\n");
+         System.out.println("Listan är full");
          utskriftMeny();
       }
-   else
-   {
-      System.out.println("Lista full. Bil ej registrerad. ta bort en gammal för att registrera ny.");
-      utskriftMeny();
-   }
+     
    
+}
+/**
+ * andraMil metoden används om man vill ändra mil på 
+ * en existerande bil i listan.
+ * @param listaBilar
+ */
+public static void andraMil(Bil[] listaBilar)
+{
+   System.out.println("Ange regnr för den bil du vill "
+                     +"uppdatera miltalen på: ");
+      String regNr = keyboard.nextLine();
+   System.out.println("Ange det uppdaterade miltalen: ");
+      int nyaMil = keyboard.nextInt();
+
+   for (int i = 0; i < listaBilar.length; i++)
+   {
+      if (listaBilar[i] != null && listaBilar[i].getregNr().equalsIgnoreCase(regNr))
+      {
+         listaBilar[i].setmiltal(nyaMil);
+      }
+   }
+}
+
+public static void tabortBil(Bil[] listaBilar)
+{
+   System.out.println("Ange regnr på bil som önskas tas bort från listan: ");
+      String regNr = keyboard.nextLine();
+
+      for (int i = 0; i < listaBilar.length; i ++)
+      {
+         if (listaBilar[i] != null && listaBilar[i].getregNr().equalsIgnoreCase(regNr))
+         {
+            listaBilar[i] = null;
+            index--;
+            break;
+         }
+         if (i == listaBilar.length -1)
+         {
+            System.out.println("Bil med regnr " +regNr + " existerar ej.");
+         }
+      }
 }
 
 /**
- * Metod som skriver ut allt enligt toString.
+ * Metod som printar ut allt enligt toString.
  * @param listaBilar
  */
 private static void utskriftBilar(Bil[] listaBilar)
