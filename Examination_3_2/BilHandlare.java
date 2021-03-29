@@ -10,15 +10,13 @@ public class BilHandlare
 
     //Skapa array som ska användas för att hålla alla  bilar.
     // kommer ha plats för 20 bilar.
-    private static Bil bilarArray[] = new Bil[5];
+    private static Bil bilarArray[] = new Bil[4];
     private static int index = 0;
-
-  
+    
 
 
    public static void main(String[] args) 
    {
-     
       //Startar med att lägga in tre bilar i arrayn.
 
    // Bil 1.
@@ -47,10 +45,8 @@ public class BilHandlare
       while (!exit)
       {
          System.out.print("Välj i menyn: ");
-         val = keyboard
-.nextInt();
-         keyboard
-.nextLine();
+         val = keyboard.nextInt();
+         keyboard.nextLine();
 
          switch (val)
          {
@@ -77,7 +73,7 @@ public static void utskriftMeny()
    System.out.println("\n\t   -- Meny --");
    System.out.println("\t 0 - Visa meny");
    System.out.println("\t 1 - Lägg till ny Bil.");
-   System.out.println("\t 2 - Skriv ut allt i arrayn.");
+   System.out.println("\t 2 - Skriv ut allt i arrayn.\n");
 }
 
 /**
@@ -112,7 +108,7 @@ public static void laggtillBil()
    laggTillNyBil(bilarArray, index);
    if (regExisterar(bilarArray))
    {
-      System.out.println("En bil existerar redan med samma regnr.");
+      System.out.println("En bil existerar redan med samma regnr. Ange en ny.\n");
       laggTillNyBil(bilarArray, index);
    }
    index++;
@@ -120,6 +116,7 @@ public static void laggtillBil()
 
 public static void laggTillNyBil(Bil[] listaBilar, int i)
 {
+  
    System.out.println("Ange Bilens regnr: ");
    String regNr = keyboard.nextLine();
 
@@ -151,8 +148,17 @@ public static void laggTillNyBil(Bil[] listaBilar, int i)
    String ovrigt = keyboard.nextLine();
 
    //Lägget till infon till arrayn.
-   listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
- 
+   if (i < 4)
+      {
+         listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
+         System.out.println("\tBil registrerat.\n");
+         utskriftMeny();
+      }
+   else
+   {
+      System.out.println("Lista full. Bil ej registrerad. ta bort en gammal för att registrera ny.");
+      utskriftMeny();
+   }
    
 }
 
@@ -166,8 +172,9 @@ private static void utskriftBilar(Bil[] listaBilar)
    {
       if (listaBilar[i] != null)
       {
-         System.out.println(listaBilar[i].toString());
+         System.out.println(listaBilar[i].toString() + "\n");
       }
    }
+   utskriftMeny();
 }
 }
