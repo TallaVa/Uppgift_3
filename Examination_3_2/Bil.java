@@ -242,18 +242,23 @@ public class Bil
         this.ovrigt = ovrigt;
     }
 
+    public double getRabattpris()
+    {
+       return pris*0.10;
+    }
+
     @Override
     public String toString()
     {
-        return   "Regnr     : " + "\t\t" + regNr
+        return   "Regnr       : " + "\t\t" + regNr
                 +"\nMärke     : " + "\t\t" + marke
                 +"\nModel     : " + "\t\t" + model
-                +"\nÅrtaö     : " + "\t\t" + artal
+                +"\nÅrtal     : " + "\t\t" + artal
                 +"\nMiltal    : " + "\t\t" + miltal
                 +"\nM/A       : " + "\t\t" + vaxel
                 +"\nFärg      : " + "\t\t" + farg
                 +"\nDrivmedel : " + "\t\t" + drivmedel
-                +"\nPris      : " + "\t\t" + pris
+                +"\nPris      : " + "\t\t" + pris + " kr"
                 +"\nÖvrigt    : " + "\t\t" + ovrigt + "\n"; 
     }
 

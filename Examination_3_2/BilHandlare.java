@@ -72,6 +72,9 @@ public class BilHandlare
             case 4:
                   utskriftBilar(bilarArray);
                   break;
+            case 5:
+                  geRabatt(bilarArray);
+                  break;
             case 9:
                   exit = true;
                   break;
@@ -93,7 +96,8 @@ public static void utskriftMeny()
    System.out.println("\t 1 - Lägg till ny bil.");
    System.out.println("\t 2 - Ändra miltal på bil i listan.");
    System.out.println("\t 3 - Ta bort bil.");
-   System.out.println("\t 4 - Skriv ut allt i arrayn.\n");
+   System.out.println("\t 4 - Skriv ut allt i arrayn.");
+   System.out.println("\t 5 - Ge rabatt.\n");
 }
 
 /**
@@ -157,7 +161,7 @@ public static void laggTillNyBil(Bil[] listaBilar, int i)
    System.out.println("Ange Bilens modell: ");
    String model = keyboard.nextLine();
 
-   System.out.println("Ange Bilens artal: ");
+   System.out.println("Ange Bilens årtal: ");
    String artal = keyboard.nextLine();
 
    System.out.println("Ange Bilens miltal: ");
@@ -218,9 +222,11 @@ public static void andraMil(Bil[] listaBilar)
    for (int i = 0; i < listaBilar.length; i++)
    {
       if (listaBilar[i] != null && listaBilar[i].getregNr().equalsIgnoreCase(regNr))
-      {
-         listaBilar[i].setmiltal(nyaMil);
-      }
+      
+         listaBilar[i].setmiltal(nyaMil);      
+      else
+         System.out.println("Fel regnr eller så existerar inte bilen.\n");
+         break;
    }
 }
 
@@ -258,5 +264,36 @@ private static void utskriftBilar(Bil[] listaBilar)
       }
    }
    utskriftMeny();
+}
+
+
+/**
+ * Den här metoden ska leta efter bilar äldre än året
+ * som användaren anger och ge ett rabatterat pris på 10%.
+ * @param listaBilar
+ */
+public static void geRabatt(Bil[] listaBilar)
+{
+   System.out.println("Vilket årtal får det inte överstiga ?");
+   int input = keyboard.nextInt();
+
+      for (int i = 0; i < listaBilar.length; i++)
+      {
+         if (listaBilar[i] != null && listaBilar[i].getartal() > input)
+         {
+            System.out.println("------------------\n");
+            System.out.println(listaBilar[i].getregNr());
+            System.out.println(listaBilar[i].getmarke());
+            System.out.println(listaBilar[i].getmodel());
+            System.out.println(listaBilar[i].getartal());
+            System.out.println(listaBilar[i].getmiltal());
+            System.out.println(listaBilar[i].getvaxel());
+            System.out.println(listaBilar[i].getfarg());
+            System.out.println(listaBilar[i].getdrivmedel());
+            System.out.println(listaBilar[i].getpris() + " kr\t" + listaBilar[i].getRabattpris() + " kr nytt pris");
+            System.out.println(listaBilar[i].gerovrigt() + "\n");
+         }
+         
+      }
 }
 }
