@@ -292,6 +292,9 @@ public static void geRabatt(Bil[] listaBilar)
             System.out.println(listaBilar[i].getdrivmedel());
             System.out.println(listaBilar[i].getpris() + " kr\t" + listaBilar[i].getRabattpris() + " kr nytt pris");
             System.out.println(listaBilar[i].gerovrigt() + "\n");
+            
+            double nyttPris = listaBilar[i].getRabattpris();
+            listaBilar[i].setpris(nyttPris);
          }
          
       }
