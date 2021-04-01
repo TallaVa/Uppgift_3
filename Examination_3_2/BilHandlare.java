@@ -10,7 +10,7 @@ public class BilHandlare
 
     //Skapa array som ska användas för att hålla alla  bilar.
     // kommer ha plats för 20 bilar.
-    private static Bil bilarArray[] = new Bil[10];
+    private static Bil bilarArray[] = new Bil[20];
     private static int index =0;
     
     
@@ -55,7 +55,7 @@ public class BilHandlare
                   utskriftMeny();      
                   break;
             case 1:
-                  if ( index >= 10)
+                  if ( index >= 20)
                   {
                      System.out.println("Listan är full.");   
                   } 
@@ -110,7 +110,8 @@ public static void utskriftMeny()
    System.out.println("\t 5 - Ge rabatt.");
    System.out.println("\t 6 - Sök efter bilar baserat på märke.");
    System.out.println("\t 7 - Sök information på registrerad bil.");
-   System.out.println("\t 8 - Visa pris för alla bilar tillsammans.\n");
+   System.out.println("\t 8 - Visa pris för alla bilar tillsammans.");
+   System.out.println("\t 9 - Avsluta. \n");
 }
 
 /**
@@ -149,9 +150,10 @@ public static void laggtillBil()
    laggTillNyBil(bilarArray, index);
    if (regnrExisterar(bilarArray))
    {
-      System.out.println("En bil existerar redan med samma regnr.\n");
-      index--;
+      System.out.println("En bil existerar redan med samma regnr. testa lägga in en annan.\n");
+      laggTillNyBil(bilarArray, index);
    }
+   index++;
 }
 
 
@@ -194,31 +196,16 @@ public static void laggTillNyBil(Bil[] listaBilar, int i)
    System.out.println("Ange övrig information: ");
    String ovrigt = keyboard.nextLine();
 
-   //Dubbelkollar så arrayn inte är "out of bounds"
-   // och då lägger in informationen man angav in i arrayn.   
-   if (index < 10)
-      { 
-         for ( int j = 0; j < listaBilar.length; j++)
-         {
-            if (listaBilar[j] == null)
-            {
-               i = j;
-               listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
-               System.out.println("\tBil registrerat.\n");
-               utskriftMeny(); 
-               System.out.println(index);
-               index++;
-               System.out.println(index);
-               break;
-            }
-         }   
-      } 
-   else if (index > 10 )
+      for ( i =0; i < listaBilar.length; i++)
       {
-         System.out.println("Listan är full\n");
-         utskriftMeny();
-      }
-     
+         if (listaBilar[i] == null)
+         {
+               listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
+               System.out.println("---- Bil registrerat----\n");
+               utskriftMeny();
+               break;
+         } 
+      }         
    
 }
 /**
@@ -228,10 +215,11 @@ public static void laggTillNyBil(Bil[] listaBilar, int i)
  */
 public static void andraMil(Bil[] listaBilar)
 {
-   System.out.println("Ange regnr för den bil du vill "
+      System.out.println("Ange regnr för den bil du vill "
                      +"uppdatera miltalen på: \n");
       String regNr = keyboard.nextLine();
-   System.out.println("Ange det uppdaterade miltalen: ");
+
+      System.out.println("Ange det uppdaterade miltalen: ");
       int nyaMil = keyboard.nextInt();
 
    for (int i = 0; i < listaBilar.length; i++)
@@ -261,12 +249,12 @@ public static void tabortBil(Bil[] listaBilar)
          {
             listaBilar[i] = null;
             index--;
-            System.out.println(index);
+            System.out.println("---- Bil borttagen ----");
             break;
          }
          if (i == listaBilar.length -1)
          {
-            System.out.println("Bil med regnr " +regNr + " existerar ej.\n");
+            System.out.println("---- Bil med regnr " +regNr + " existerar ej ----\n");
          }
       }
 }
@@ -284,6 +272,7 @@ private static void utskriftBilar(Bil[] listaBilar)
          System.out.println(listaBilar[i].toString() + "\n");
       }
    }
+   System.out.println("------------------------");
    utskriftMeny();
 }
 
@@ -300,21 +289,21 @@ public static void geRabatt(Bil[] listaBilar)
 
       for (int i = 0; i < listaBilar.length; i++)
       {
-         if (listaBilar[i] != null && listaBilar[i].getartal() < input)
+         if (listaBilar[i] != null && listaBilar[i].getartal() <= input)
          {
             System.out.println("------------------\n");
-            System.out.println(listaBilar[i].getregNr());
-            System.out.println(listaBilar[i].getmarke());
-            System.out.println(listaBilar[i].getmodel());
-            System.out.println(listaBilar[i].getartal());
-            System.out.println(listaBilar[i].getmiltal());
-            System.out.println(listaBilar[i].getvaxel());
-            System.out.println(listaBilar[i].getfarg());
-            System.out.println(listaBilar[i].getdrivmedel());
-            System.out.println(listaBilar[i].getpris() + " kr\t" 
-                                 + listaBilar[i].getRabattpris() 
-                                 + " kr nytt pris");
-            System.out.println(listaBilar[i].gerovrigt() + "\n");
+            System.out.println("Regnr     : " + listaBilar[i].getregNr());
+            System.out.println("Märke     : " + listaBilar[i].getmarke());
+            System.out.println("Model     : " + listaBilar[i].getmodel());
+            System.out.println("Årtal     : " + listaBilar[i].getartal());
+            System.out.println("Miltal    : " + listaBilar[i].getmiltal());
+            System.out.println("Växel     : " + listaBilar[i].getvaxel());
+            System.out.println("Färg      : " + listaBilar[i].getfarg());
+            System.out.println("Drivmedel : " + listaBilar[i].getdrivmedel());
+            System.out.print("Pris      : " + listaBilar[i].getpris() + " kr\t Det nya priset är : ");
+            System.out.printf("%.2f", listaBilar[i].getRabattpris());
+            System.out.println(" kr");
+            System.out.println("Övrigt    : " + listaBilar[i].gerovrigt() + "\n");
             double nyttPris = listaBilar[i].getRabattpris();
             listaBilar[i].setpris(nyttPris);
          }
@@ -388,7 +377,9 @@ public static void geRabatt(Bil[] listaBilar)
          sum += listaBilar[i].getpris();
          }
       }
+      System.out.print("---- ");
       System.out.printf("%.2f", sum);
-      System.out.println(" kr för alla bilar i listan.\n");
+      System.out.print(" kr för alla bilar i listan");
+      System.out.println(" ---- \n");
    }
 }

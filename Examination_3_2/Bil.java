@@ -247,10 +247,13 @@ public class Bil
        return pris*0.10;
     }
 
+    /**
+     * Struktur för utskrift
+     */
     @Override
     public String toString()
     {
-        return   "Regnr       : " + "\t\t" + regNr
+        return   "Regnr     : " + "\t\t" + regNr
                 +"\nMärke     : " + "\t\t" + marke
                 +"\nModel     : " + "\t\t" + model
                 +"\nÅrtal     : " + "\t\t" + artal
@@ -258,7 +261,7 @@ public class Bil
                 +"\nM/A       : " + "\t\t" + vaxel
                 +"\nFärg      : " + "\t\t" + farg
                 +"\nDrivmedel : " + "\t\t" + drivmedel
-                +"\nPris      : " + "\t\t" + pris + " kr"
+                +"\nPris      : " + "\t\t" + String.format("%.2f", pris)  + " kr"
                 +"\nÖvrigt    : " + "\t\t" + ovrigt + "\n"; 
     }
 
