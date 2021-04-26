@@ -61,7 +61,8 @@ public class BilHandlare
                   } 
                   else
                   {
-                     laggtillBil();
+                     //laggtillBil();
+                     laggTillNyBil(bilarArray);
                   }                
                   break;                    
             case 2:
@@ -115,98 +116,67 @@ public static void utskriftMeny()
 }
 
 /**
- * regnrExisterar metoden kommer att kontrolera så det inte 
- * finns dubbletter innan man kan lägga till nya bilar i
- * arrayn.
- * @param listaBilar
- * @return Om det finns dublett eller inte.
- */
-public static boolean regnrExisterar(Bil[] listaBilar)
-{
-   boolean existerar = false;
-
-   for (int i = 0; i < listaBilar.length; i++)
-   {
-      for (int j = i + 1; j < listaBilar.length; j++)
-      {
-         if (listaBilar[i] != null && listaBilar[j] != null)
-         {
-            if (listaBilar[i].getregNr().equals(listaBilar[j].getregNr()))
-            {
-               existerar = true;
-            }
-         }
-      }
-   }
-   return existerar;
-}
-
-/**
- * laggtillBil dubbelkollar om identisk bil existerar
- * så ett meddelande kan printas.
- */
-public static void laggtillBil()
-{
-   laggTillNyBil(bilarArray, index);
-   if (regnrExisterar(bilarArray))
-   {
-      System.out.println("En bil existerar redan med samma regnr. testa lägga in en annan.\n");
-      laggTillNyBil(bilarArray, index);
-   }
-   index++;
-}
-
-
-/**
  * laggTillNyBil metoden används för att lägga till ny bil.
  * användaren kommer få nedan frågor att svara på om nya bilen.
  * @param listaBilar
  * @param i
  */
-public static void laggTillNyBil(Bil[] listaBilar, int i)
+public static void laggTillNyBil(Bil[] listaBilar)
 {
-  
-   System.out.println("Ange Bilens regnr: ");
+      
+   System.out.println("Ange Bilens regnr på bil som du vill lägga till: ");
    String regNr = keyboard.nextLine();
 
-   System.out.println("Ange Bilens märke: ");
-   String marke = keyboard.nextLine();
-
-   System.out.println("Ange Bilens modell: ");
-   String model = keyboard.nextLine();
-
-   System.out.println("Ange Bilens årtal: ");
-   String artal = keyboard.nextLine();
-
-   System.out.println("Ange Bilens miltal: ");
-   String miltal = keyboard.nextLine();
-
-   System.out.println("Ange Bilens Växellåda (M/A): ");
-   String vaxel = keyboard.nextLine();
-
-   System.out.println("Ange Bilens Färg: ");
-   String farg = keyboard.nextLine();
-
-   System.out.println("Ange Bilens drivmedel: ");
-   String drivmedel = keyboard.nextLine();
-
-   System.out.println("Ange Bilens pris: ");
-   String pris = keyboard.nextLine();
-
-   System.out.println("Ange övrig information: ");
-   String ovrigt = keyboard.nextLine();
-
-      for ( i =0; i < listaBilar.length; i++)
+   for ( int j = 0; j < listaBilar.length; j++ )
+   {
+      if (listaBilar[j] !=null && listaBilar[j].getregNr().equalsIgnoreCase(regNr))
+      {    
+         System.out.println("Finns dublett. testa lägga till en annan regnr.");
+         utskriftMeny();
+         break;
+      }
+      if (j == listaBilar.length -1)
       {
-         if (listaBilar[i] == null)
+         System.out.println("Ange Bilens märke: ");
+         String marke = keyboard.nextLine();
+
+         System.out.println("Ange Bilens modell: ");
+         String model = keyboard.nextLine();
+
+         System.out.println("Ange Bilens årtal: ");
+         String artal = keyboard.nextLine();
+
+         System.out.println("Ange Bilens miltal: ");
+         String miltal = keyboard.nextLine();
+
+         System.out.println("Ange Bilens Växellåda (M/A): ");
+         String vaxel = keyboard.nextLine();
+
+         System.out.println("Ange Bilens Färg: ");
+         String farg = keyboard.nextLine();
+
+         System.out.println("Ange Bilens drivmedel: ");
+         String drivmedel = keyboard.nextLine();
+
+         System.out.println("Ange Bilens pris: ");
+         String pris = keyboard.nextLine();
+
+         System.out.println("Ange övrig information: ");
+         String ovrigt = keyboard.nextLine();
+
+         for (int i =0; i < listaBilar.length; i++)
          {
+            if (listaBilar[i] == null)
+            {
                listaBilar[i] = new Bil(regNr, marke, model, Integer.parseInt(artal), Integer.parseInt(miltal), vaxel, farg, drivmedel, Double.parseDouble(pris), ovrigt);
                System.out.println("---- Bil registrerat----\n");
                utskriftMeny();
+               index++;
                break;
-         } 
-      }         
-   
+            }      
+         }
+      } 
+   }         
 }
 /**
  * andraMil metoden används om man vill ändra mil på 
@@ -227,7 +197,8 @@ public static void andraMil(Bil[] listaBilar)
       if (listaBilar[i] != null && listaBilar[i].getregNr().equalsIgnoreCase(regNr))
          {
             listaBilar[i].setmiltal(nyaMil);
-            System.out.println("---- Uppdaterad ----");
+            System.out.println("---- Uppdaterad ----\n");
+            
          } 
    }
    System.out.println("\n");
@@ -243,18 +214,22 @@ public static void tabortBil(Bil[] listaBilar)
    System.out.println("Ange regnr på bil som önskas tas bort från listan: \n");
       String regNr = keyboard.nextLine();
 
-      for (int i = 0; i < listaBilar.length; i ++)
+      for (int i = 0; i < listaBilar.length; i++)
       {
          if (listaBilar[i] != null && listaBilar[i].getregNr().equalsIgnoreCase(regNr))
          {
             listaBilar[i] = null;
             index--;
-            System.out.println("---- Bil borttagen ----");
+            System.out.println("---- Bil borttagen ----\n");
+            utskriftMeny();
             break;
          }
          if (i == listaBilar.length -1)
          {
             System.out.println("---- Bil med regnr " +regNr + " existerar ej ----\n");
+            System.out.println("------------------------\n");
+            utskriftMeny();
+            break;
          }
       }
 }
@@ -272,7 +247,7 @@ private static void utskriftBilar(Bil[] listaBilar)
          System.out.println(listaBilar[i].toString() + "\n");
       }
    }
-   System.out.println("------------------------");
+   System.out.println("------------------------\n");
    utskriftMeny();
 }
 
@@ -284,14 +259,12 @@ private static void utskriftBilar(Bil[] listaBilar)
  */
 public static void geRabatt(Bil[] listaBilar)
 {
-   System.out.println("Vilket årtal får det inte överstiga ?");
-   int input = keyboard.nextInt();
+   int input = 2005;
 
       for (int i = 0; i < listaBilar.length; i++)
       {
          if (listaBilar[i] != null && listaBilar[i].getartal() <= input)
          {
-            System.out.println("------------------\n");
             System.out.println("Regnr     : " + listaBilar[i].getregNr());
             System.out.println("Märke     : " + listaBilar[i].getmarke());
             System.out.println("Model     : " + listaBilar[i].getmodel());
@@ -306,6 +279,7 @@ public static void geRabatt(Bil[] listaBilar)
             System.out.println("Övrigt    : " + listaBilar[i].gerovrigt() + "\n");
             double nyttPris = listaBilar[i].getRabattpris();
             listaBilar[i].setpris(nyttPris);
+            System.out.println("------------------------\n");
          }
          
       }

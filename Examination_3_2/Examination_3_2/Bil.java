@@ -244,7 +244,7 @@ public class Bil
 
     public double getRabattpris()
     {
-       return pris*0.10;
+       return pris*0.90;
     }
 
     /**
